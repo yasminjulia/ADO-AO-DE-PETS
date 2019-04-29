@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "508694046597",
+    "firebase_url": "https://loginregistro-c359e.firebaseio.com",
+    "project_id": "loginregistro-c359e",
+    "storage_bucket": "loginregistro-c359e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508694046597:android:a28a5c808385459f",
+        "android_client_info": {
+          "package_name": "com.example.login_registro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508694046597-fk7p7jslkle3ni9mmo2rblna1ioh3ji4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.login_registro",
+            "certificate_hash": "2ed19e2d07cf74bea21f8cf30dce29296a761e2d"
+          }
+        },
+        {
+          "client_id": "508694046597-21ir5mbqkicjmht2a766hcjm68pvq4fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-5twKxKmGoogADT4je-w2_En-2WEB2Ww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508694046597-21ir5mbqkicjmht2a766hcjm68pvq4fa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

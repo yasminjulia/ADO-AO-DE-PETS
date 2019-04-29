@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Publicacao">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="382dp"
+        android:layout_height="684dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/bt_postar"
+            android:layout_width="105dp"
+            android:layout_height="49dp"
+            android:layout_below="@+id/endereco"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="138dp"
+            android:layout_marginLeft="138dp"
+            android:layout_marginTop="66dp"
+            android:layout_marginEnd="139dp"
+            android:layout_marginRight="139dp"
+            android:layout_marginBottom="167dp"
+            android:text="postar"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="155dp"
+            android:layout_height="44dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="126dp"
+            android:layout_marginLeft="126dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginBottom="31dp"
+            android:text="Adote um pet"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/animal_nome"
+            android:layout_width="226dp"
+            android:layout_height="46dp"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="91dp"
+            android:layout_marginEnd="23dp"
+            android:layout_marginRight="23dp"
+            android:ems="10"
+            android:hint="Seu nome"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="83dp"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="225dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginRight="34dp"
+            android:layout_toStartOf="@+id/animal_nome"
+            android:layout_toLeftOf="@+id/animal_nome"
+            android:text="Nome"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="93dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/textView6"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="41dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_toStartOf="@+id/idade"
+            android:layout_toLeftOf="@+id/idade"
+            android:text="Dados do pet"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/idade"
+            android:layout_width="226dp"
+            android:layout_height="46dp"
+            android:layout_below="@+id/animal_nome"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="23dp"
+            android:layout_marginRight="23dp"
+            android:ems="10"
+            android:hint="Tipo, raça, idade"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="71dp"
+            android:layout_height="36dp"
+            android:layout_below="@+id/textView7"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="39dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginRight="33dp"
+            android:layout_toStartOf="@+id/endereco"
+            android:layout_toLeftOf="@+id/endereco"
+            android:text="Endereço"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/endereco"
+            android:layout_width="226dp"
+            android:layout_height="46dp"
+            android:layout_below="@+id/idade"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="23dp"
+            android:layout_marginRight="23dp"
+            android:ems="10"
+            android:hint="Onde encontrar o pet"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/bt_pesquisa"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="116dp"
+            android:layout_marginLeft="116dp"
+            android:layout_marginEnd="117dp"
+            android:layout_marginRight="117dp"
+            android:layout_marginBottom="93dp"
+            android:text="Pesquisar Pet"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
