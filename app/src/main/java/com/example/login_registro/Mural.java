@@ -21,34 +21,23 @@ public class Mural extends AppCompatActivity {
         setContentView( R.layout.activity_mural );
         ListView list = (ListView) findViewById( R.id.lista );
 
-        final ArrayList<String> coisas = PreencherDados();
+        final ArrayList<String> coisas = Preencher();
         ArrayAdapter<String> array = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coisas  );
         list.setAdapter( array );
     }
 
-    private ArrayList<String> PreencherDados() {
+    private ArrayList<String> Preencher() {
         try {
         db = openOrCreateDatabase( "listagem.db", Context.MODE_PRIVATE, null );
         c = db.rawQuery( "SELECT * from listagem", null );
 
-        }catch (exception e){
+        } catch (Exception e){
             Toast.makeText( Mural.this, "Erro de publicação", Toast.LENGTH_SHORT ).show();
         }
 
 
         ArrayList<String> dados = new ArrayList<String>();
 
-        dados.add( "Paulo" );
-        dados.add( "Juliana" );
-        dados.add( "Pedro Santos" );
-        dados.add( "Luis" );
-        dados.add( "Fernando" );
-        dados.add( "Pedro Carlos" );
-        dados.add( "Luis Claudio" );
-        dados.add( "Maria Luisa" );
-        dados.add( "Paula Santos" );
-        dados.add( "Valenttina" );
-        dados.add( "Fernanda Matos" );
         return (dados);
     }
 }

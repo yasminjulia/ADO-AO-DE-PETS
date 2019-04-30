@@ -18,7 +18,9 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String str = "CREATE TABLE Utilizador(username TEXT PRIMARY KEY, password TEXT);";
+        String str1 = "CREATE TABLE DadosAnimal(nome TEXT PRIMARY KEY, animal TEXT, local TEXT);";
         db.execSQL( str );
+        db.execSQL( str1 );
     }
 
     @Override
@@ -44,6 +46,14 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return "ERRO";
     }
+    public String PreencherDados(String nome, String animal, String local) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor b = db.rawQuery( "SELECT * FROM  DadosAnimal WHERE nome=? AND animal=? AND local=?", new String[]{nome,  animal, local} );
+        if (b.getCount() > 0) {
+            return "OK";
+        }
+        return "ERRO";
+    }
 
     public long CriarPost(String nome, String animal, String end) {
         SQLiteDatabase db = getWritableDatabase();
@@ -54,4 +64,6 @@ public class DBHelper extends SQLiteOpenHelper {
         long result = db.insert( "DadosAnimal", null, a );
         return result;
     }
+
+
 }
