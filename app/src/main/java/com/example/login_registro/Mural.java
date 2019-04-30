@@ -32,7 +32,7 @@ public class Mural extends AppCompatActivity {
         c = db.rawQuery( "SELECT * from listagem", null );
 
         }catch (exception e){
-            Toast.makeText( Mural.this, "Publicação inválida", Toast.LENGTH_SHORT ).show();
+            Toast.makeText( Mural.this, "Erro de publicação", Toast.LENGTH_SHORT ).show();
         }
 
 
