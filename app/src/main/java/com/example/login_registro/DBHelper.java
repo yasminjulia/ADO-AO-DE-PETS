@@ -7,8 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
-    private static int versao = 1;
+    private static int versao = 2;
     private static String nome = "Login_Registro_BaseDados.db";
 
     public DBHelper(Context context) {
@@ -18,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String str = "CREATE TABLE Utilizador(username TEXT PRIMARY KEY, password TEXT);";
-        String str1 = "CREATE TABLE DadosAnimal(nome TEXT PRIMARY KEY, animal TEXT, local TEXT);";
+        String str1 = "CREATE TABLE DadosAnimal(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT , animal TEXT, local TEXT);";
         db.execSQL( str );
         db.execSQL( str1 );
     }
@@ -26,6 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL( "DROP TABLE IF EXISTS Utilizador;" );
+        db.execSQL( "DROP TABLE IF EXISTS DadosAnimal;" );
         onCreate( db );
     }
 
@@ -46,13 +49,42 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return "ERRO";
     }
-    public String PreencherDados(String nome, String animal, String local) {
+    public ArrayList<String> PreencherDados() {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor b = db.rawQuery( "SELECT * FROM  DadosAnimal WHERE nome=? AND animal=? AND local=?", new String[]{nome,  animal, local} );
+        Cursor b = db.rawQuery( "SELECT * FROM  DadosAnimal ", null);
+        ArrayList<String> names = new ArrayList<>();
         if (b.getCount() > 0) {
-            return "OK";
+            b.moveToFirst();
+            while ( !b.isAfterLast()) {
+                String name= b.getString(b.getColumnIndex("nome"));
+                names.add(name);
+                b.moveToNext();
+            }
+
+            return names;
         }
-        return "ERRO";
+        return null;
+    }
+
+    public Animal ObterDetalhesAnimal() {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor b = db.rawQuery( "SELECT * FROM  DadosAnimal ", null);
+
+        Animal animal = null;
+        if (b.getCount() > 0) {
+            b.moveToFirst();
+            while ( !b.isAfterLast()) {
+                animal = new Animal();
+                animal.setName(b.getString(b.getColumnIndex("nome")));
+                animal.setAge(b.getString(b.getColumnIndex("age")));
+                animal.setEndereco(b.getString(b.getColumnIndex("nome")));
+
+                b.moveToNext();
+            }
+
+            return animal;
+        }
+        return animal;
     }
 
     public long CriarPost(String nome, String animal, String end) {

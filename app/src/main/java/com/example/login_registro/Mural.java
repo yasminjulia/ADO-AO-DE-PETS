@@ -13,13 +13,15 @@ import android.view.Menu;
 import java.util.ArrayList;
 
 public class Mural extends AppCompatActivity {
-    SQLiteDatabase db;
+
+    DBHelper db;
     Cursor c;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_mural );
         ListView list = (ListView) findViewById( R.id.lista );
+        db= new DBHelper( this );
 
         final ArrayList<String> coisas = Preencher();
         ArrayAdapter<String> array = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coisas  );
@@ -27,17 +29,6 @@ public class Mural extends AppCompatActivity {
     }
 
     private ArrayList<String> Preencher() {
-        try {
-        db = openOrCreateDatabase( "listagem.db", Context.MODE_PRIVATE, null );
-        c = db.rawQuery( "SELECT * from listagem", null );
-
-        } catch (Exception e){
-            Toast.makeText( Mural.this, "Erro de publicação", Toast.LENGTH_SHORT ).show();
-        }
-
-
-        ArrayList<String> dados = new ArrayList<String>();
-
-        return (dados);
+        return (db.PreencherDados());
     }
 }
