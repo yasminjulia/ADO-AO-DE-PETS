@@ -2,12 +2,19 @@ package com.example.login_registro;
 
 public class Animal {
 
-    String name;
-    String age;
-    String endereco;
+    String name, age, endereco, contato;
+
 
     public String getName() {
         return name;
+    }
+
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
     }
 
     public void setName(String name) {

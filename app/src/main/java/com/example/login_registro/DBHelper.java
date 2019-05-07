@@ -77,8 +77,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 animal = new Animal();
                 animal.setName(b.getString(b.getColumnIndex("nome")));
                 animal.setAge(b.getString(b.getColumnIndex("age")));
-                animal.setEndereco(b.getString(b.getColumnIndex("nome")));
-
+                animal.setEndereco(b.getString(b.getColumnIndex("endereco")));
+                animal.setContato( b.getString(b.getColumnIndex( "contato")));
                 b.moveToNext();
             }
 
