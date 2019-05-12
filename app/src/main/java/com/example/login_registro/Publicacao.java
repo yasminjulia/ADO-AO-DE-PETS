@@ -2,6 +2,8 @@ package com.example.login_registro;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,14 +47,15 @@ public class Publicacao extends AppCompatActivity {
             public void onClick(View v) {
                 String animais = animal.getText().toString();
                 String age1 = age.getText().toString();
-                String end =local.getText().toString();
+                String end = local.getText().toString();
+                String tel1 = tel.getText().toString();
 
                 if (animais.equals( "" )){
                     Toast.makeText( Publicacao.this,"Nome não inserido, tente novamente", Toast.LENGTH_SHORT).show();
                 } else if (age1.equals( "" )|| end.equals( "" )) {
                     Toast.makeText( Publicacao.this, "Deve preencher o campo corretamente, tente novamente", Toast.LENGTH_SHORT ).show();
                 } else {
-                    long res  = db.CriarPost( animais, age1, end );
+                    long res  = db.CriarPost( animais, age1, end, tel1);
                     if (res>0){
                         Toast.makeText( Publicacao.this, "Publicado com sucesso", Toast.LENGTH_SHORT ).show();
                     } else {
@@ -71,10 +74,25 @@ public class Publicacao extends AppCompatActivity {
             }
         });
 
-        cam.setOnClickListener(){
+        cam.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
+            }
+        } );
+    }
 
-        };
-
-
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE );
+        if (takePictureIntent.resolveActivity( getPackageManager())!= null){
+            startActivityForResult( takePictureIntent, REQUEST_IMAGE_CAPTURE );
+        }
+    }
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode== RESULT_OK){
+        Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imThumb.setImageBitmap( imageBitmap );
+        }
     }
 }

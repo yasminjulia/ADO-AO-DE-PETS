@@ -10,7 +10,7 @@ import android.widget.EditText;
 import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static int versao = 2;
+    private static int versao = 3;
     private static String nome = "Login_Registro_BaseDados.db";
 
     public DBHelper(Context context) {
@@ -87,12 +87,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return animal;
     }
 
-    public long CriarPost(String nome, String animal, String end) {
+    public long CriarPost(String nome, String animal, String end, String tel) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues a = new ContentValues();
         a.put("nome", nome);
         a.put("animal" , animal);
         a.put( "local", end);
+        a.put( "Contato",tel );
         long result = db.insert( "DadosAnimal", null, a );
         return result;
     }
