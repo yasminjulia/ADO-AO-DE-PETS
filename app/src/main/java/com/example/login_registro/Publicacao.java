@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ImageView;
 import android.content.Context;
-import static java.lang.String.*;
+
 
 public class Publicacao extends AppCompatActivity {
 
@@ -41,7 +41,6 @@ public class Publicacao extends AppCompatActivity {
         map = (Button)findViewById( R.id.Buttomap );
         imThumb = (ImageView) findViewById(R.id.imThumb);
 
-
         postar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,8 +49,8 @@ public class Publicacao extends AppCompatActivity {
                 String end = local.getText().toString();
                 String tel1 = tel.getText().toString();
 
-                if (animais.equals( "" )){
-                    Toast.makeText( Publicacao.this,"Nome não inserido, tente novamente", Toast.LENGTH_SHORT).show();
+                if (animais.equals( "" ) || tel1.equals( "" )){
+                    Toast.makeText( Publicacao.this,"Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
                 } else if (age1.equals( "" )|| end.equals( "" )) {
                     Toast.makeText( Publicacao.this, "Deve preencher o campo corretamente, tente novamente", Toast.LENGTH_SHORT ).show();
                 } else {
@@ -61,7 +60,6 @@ public class Publicacao extends AppCompatActivity {
                     } else {
                         Toast.makeText( Publicacao.this, "Publicação inválida", Toast.LENGTH_SHORT ).show();
                     }
-
                 }
             }
 
@@ -73,7 +71,6 @@ public class Publicacao extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
         cam.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +78,6 @@ public class Publicacao extends AppCompatActivity {
             }
         } );
     }
-
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE );
         if (takePictureIntent.resolveActivity( getPackageManager())!= null){
@@ -95,4 +91,5 @@ public class Publicacao extends AppCompatActivity {
             imThumb.setImageBitmap( imageBitmap );
         }
     }
+
 }
