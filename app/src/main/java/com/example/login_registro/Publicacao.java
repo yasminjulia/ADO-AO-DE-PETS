@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.ImageView;
 import android.content.Context;
@@ -18,7 +19,8 @@ public class Publicacao extends AppCompatActivity {
 
     EditText animal, age, tel, local;
     DBHelper db;
-    Button postar, pesquisar, cam, map;
+    Button postar, pesquisar;
+    ImageButton cam, map;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView imThumb;
     Context context;
@@ -37,8 +39,8 @@ public class Publicacao extends AppCompatActivity {
         postar=(Button)findViewById(R.id.bt_postar);
         pesquisar = (Button)findViewById( R.id.bt_pesquisa );
         tel = (EditText)findViewById( R.id.contato );
-        cam = (Button)findViewById( R.id.Buttocam );
-        map = (Button)findViewById( R.id.Buttomap );
+        cam = (ImageButton) findViewById( R.id.Buttocam );
+        map = (ImageButton)findViewById( R.id.Buttomap );
         imThumb = (ImageView) findViewById(R.id.imThumb);
 
 

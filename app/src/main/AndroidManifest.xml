@@ -4,6 +4,11 @@
     package="com.example.login_registro"
     tools:ignore="ExtraText">
 
+  
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,8 +32,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true" />
 
-
-]]&gt;</manifest>
+</manifest>
