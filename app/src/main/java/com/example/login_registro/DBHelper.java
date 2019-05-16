@@ -10,7 +10,7 @@ import android.widget.EditText;
 import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static int versao = 3;
+    private static int versao = 6;
     private static String nome = "Login_Registro_BaseDados.db";
 
     public DBHelper(Context context) {
@@ -19,17 +19,31 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        ContentValues cv = new ContentValues();
         String str = "CREATE TABLE Utilizador(username TEXT PRIMARY KEY, password TEXT);";
-        String str1 = "CREATE TABLE DadosAnimal(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT , animal TEXT, local TEXT);";
+        String str1 = "CREATE TABLE DadosAnimal(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT , animal TEXT, local TEXT, contato INT);";
         db.execSQL( str );
         db.execSQL( str1 );
+        cv.put( "username", "adm" );
+        cv.put( "password", "adm" );
+        db.insert( "Utilizador", null, cv );
+
+        cv = new ContentValues();
+        cv.put( "nome", "vania" );
+        cv.put( "animal", "doguinho" );
+        cv.put( "local", "Ribeira" );
+        cv.put("contato", "809890797");
+        db.insert( "DadosAnimal", null, cv );
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        ContentValues cv = new ContentValues();
         db.execSQL( "DROP TABLE IF EXISTS Utilizador;" );
         db.execSQL( "DROP TABLE IF EXISTS DadosAnimal;" );
         onCreate( db );
+
     }
 
     public long CriarUtlizador(String username, String password) {

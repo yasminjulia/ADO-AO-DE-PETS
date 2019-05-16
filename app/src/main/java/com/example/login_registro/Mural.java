@@ -24,6 +24,7 @@ public class Mural extends AppCompatActivity {
         db= new DBHelper( this );
 
         final ArrayList<String> coisas = Preencher();
+
         ArrayAdapter<String> array = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coisas  );
         list.setAdapter( array );
     }

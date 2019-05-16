@@ -2,7 +2,7 @@ package com.example.login_registro;
 
 public class Animal {
 
-    String name, age, endereco, contato;
+    private String name, age, endereco, contato;
 
 
     public String getName() {
