@@ -6,7 +6,7 @@ public class Animal {
 
     private String name, age, endereco, contato;
 
-    public Bitmap getImage() {
+    public static Bitmap getImage() {
         return image;
     }
 
@@ -17,11 +17,11 @@ public class Animal {
     private Bitmap image;
 
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public String getContato() {
+    public static String getContato() {
         return contato;
     }
 
@@ -33,7 +33,7 @@ public class Animal {
         this.name = name;
     }
 
-    public String getAge() {
+    public static String getAge() {
         return age;
     }
 
@@ -41,7 +41,7 @@ public class Animal {
         this.age = age;
     }
 
-    public String getEndereco() {
+    public static String getEndereco() {
         return endereco;
     }
 

@@ -1,5 +1,4 @@
 package com.example.login_registro;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,11 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.widget.EditText;
-
 import java.util.ArrayList;
+import static com.example.login_registro.Animal.*;
+
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static int versao = 7;
+    private static int versao = 8;
     private static String nome = "Login_Registro_BaseDados.db";
 
     public DBHelper(Context context) {
@@ -105,15 +105,15 @@ public class DBHelper extends SQLiteOpenHelper {
         return animal;
     }
 
-    public long CriarPost(Animal animal) {
+    public Object CriarPost(String name, String age, String endereco, String contato, Bitmap image) {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues a = new ContentValues();
-        a.put("nome", nome);
-        a.put("animal" , animal);
-        a.put( "local", end);
-        a.put( "Contato",tel );
-        a.put("image", DbBitmapUtility.getBytes(animal.getImage()));
+        a.put("contato", String.valueOf(getContato()));
+        a.put("nome" , String.valueOf(getName()));
+        a.put( "idade", String.valueOf(getAge()));
+        a.put( "endereco", String.valueOf(getEndereco()) );
+        a.put("image", DbBitmapUtility.getBytes(Animal.getImage()));
         long result = db.insert( "DadosAnimal", null, a );
         return result;
     }

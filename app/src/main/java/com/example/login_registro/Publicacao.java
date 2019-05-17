@@ -50,19 +50,19 @@ public class Publicacao extends AppCompatActivity {
             public void onClick(View v) {
                 animalObject = new Animal();
                 animalObject.setName(animal.getText().toString());
+                animalObject.setAge(age.getText().toString());
+                animalObject.setEndereco(local.getText().toString());
+                animalObject.setContato(tel.getText().toString());
 
-                String age1 = age.getText().toString();
-                String end = local.getText().toString();
-                String tel1 = tel.getText().toString();
                 //
 
                 if (animalObject.getName().equals( "" )){
                     Toast.makeText( Publicacao.this,"Nome não inserido, tente novamente", Toast.LENGTH_SHORT).show();
-                } else if (age1.equals( "" )|| end.equals( "" )) {
+                } else if (animalObject.getAge().equals( "" )|| animalObject.getEndereco().equals( "" )) {
                     Toast.makeText( Publicacao.this, "Deve preencher o campo corretamente, tente novamente", Toast.LENGTH_SHORT ).show();
                 } else {
                     //alterar metodo criar post para receber o objeto animal
-                    long res  = db.CriarPost( animalObject.getName(), age1, end, tel1);
+                    long res  = (long) db.CriarPost( animalObject.getName(), animalObject.getAge(), animalObject.getEndereco(), animalObject.getContato(), animalObject.getImage());
                     if (res>0){
                         Toast.makeText( Publicacao.this, "Publicado com sucesso", Toast.LENGTH_SHORT ).show();
                     } else {
