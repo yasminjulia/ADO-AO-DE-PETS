@@ -1,8 +1,20 @@
 package com.example.login_registro;
 
+import android.graphics.Bitmap;
+
 public class Animal {
 
     private String name, age, endereco, contato;
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
+    }
+
+    private Bitmap image;
 
 
     public String getName() {

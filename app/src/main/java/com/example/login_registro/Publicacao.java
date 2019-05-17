@@ -24,6 +24,7 @@ public class Publicacao extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView imThumb;
     Context context;
+    Animal animalObject;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -47,17 +48,21 @@ public class Publicacao extends AppCompatActivity {
         postar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String animais = animal.getText().toString();
+                animalObject = new Animal();
+                animalObject.setName(animal.getText().toString());
+
                 String age1 = age.getText().toString();
                 String end = local.getText().toString();
                 String tel1 = tel.getText().toString();
+                //
 
-                if (animais.equals( "" )){
+                if (animalObject.getName().equals( "" )){
                     Toast.makeText( Publicacao.this,"Nome não inserido, tente novamente", Toast.LENGTH_SHORT).show();
                 } else if (age1.equals( "" )|| end.equals( "" )) {
                     Toast.makeText( Publicacao.this, "Deve preencher o campo corretamente, tente novamente", Toast.LENGTH_SHORT ).show();
                 } else {
-                    long res  = db.CriarPost( animais, age1, end, tel1);
+                    //alterar metodo criar post para receber o objeto animal
+                    long res  = db.CriarPost( animalObject.getName(), age1, end, tel1);
                     if (res>0){
                         Toast.makeText( Publicacao.this, "Publicado com sucesso", Toast.LENGTH_SHORT ).show();
                     } else {
@@ -94,7 +99,10 @@ public class Publicacao extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode== RESULT_OK){
         Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+
             imThumb.setImageBitmap( imageBitmap );
+            animalObject.setImage(imageBitmap);
+
         }
     }
 }
