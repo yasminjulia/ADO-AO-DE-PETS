@@ -4,7 +4,10 @@ import android.graphics.Bitmap;
 
 public class Animal {
 
-    private String name, age, endereco, contato;
+    private static String name;
+    private static String age;
+    private static String endereco;
+    private static String contato;
 
     public static Bitmap getImage() {
         return image;
@@ -14,10 +17,11 @@ public class Animal {
         this.image = image;
     }
 
-    private Bitmap image;
+    private static Bitmap image;
 
 
     public static String getName() {
+        final String name = Animal.name;
         return name;
     }
 
@@ -48,7 +52,5 @@ public class Animal {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-
-
 
 }

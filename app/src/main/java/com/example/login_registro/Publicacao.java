@@ -1,5 +1,4 @@
 package com.example.login_registro;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;

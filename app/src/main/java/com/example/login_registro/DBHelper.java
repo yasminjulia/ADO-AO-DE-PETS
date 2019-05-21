@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.widget.EditText;
 import java.util.ArrayList;
 import static com.example.login_registro.Animal.*;
+import static java.lang.String.valueOf;
 
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -36,7 +37,6 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("contato", "809890797");
 
         db.insert( "DadosAnimal", null, cv );
-
     }
 
     @Override
@@ -109,10 +109,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues a = new ContentValues();
-        a.put("contato", String.valueOf(getContato()));
-        a.put("nome" , String.valueOf(getName()));
-        a.put( "idade", String.valueOf(getAge()));
-        a.put( "endereco", String.valueOf(getEndereco()) );
+        a.put("contato", valueOf(getContato()));
+        a.put("nome" , valueOf(getName()));
+        a.put( "idade", valueOf(getAge()));
+        a.put( "endereco", valueOf(getEndereco()) );
         a.put("image", DbBitmapUtility.getBytes(Animal.getImage()));
         long result = db.insert( "DadosAnimal", null, a );
         return result;
