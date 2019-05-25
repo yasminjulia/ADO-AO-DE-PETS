@@ -25,11 +25,11 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="71dp"
-            android:layout_marginLeft="71dp"
-            android:layout_marginTop="129dp"
-            android:layout_marginEnd="71dp"
-            android:layout_marginRight="71dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="41dp"
+            android:layout_marginEnd="78dp"
+            android:layout_marginRight="78dp"
             android:text="Mural de Publicações"
             android:textSize="24sp" />
 

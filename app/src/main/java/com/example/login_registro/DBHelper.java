@@ -1,16 +1,18 @@
 package com.example.login_registro;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.widget.EditText;
-
 import java.util.ArrayList;
+import static com.example.login_registro.Animal.*;
+import static java.lang.String.valueOf;
+
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static int versao = 3;
+    private static int versao = 8;
     private static String nome = "Login_Registro_BaseDados.db";
 
     public DBHelper(Context context) {
@@ -19,17 +21,31 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        ContentValues cv = new ContentValues();
         String str = "CREATE TABLE Utilizador(username TEXT PRIMARY KEY, password TEXT);";
-        String str1 = "CREATE TABLE DadosAnimal(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT , animal TEXT, local TEXT);";
+        String str1 = "CREATE TABLE DadosAnimal(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT , animal TEXT, local TEXT, contato INT, imagem BLOB);";
         db.execSQL( str );
         db.execSQL( str1 );
+        cv.put( "username", "adm" );
+        cv.put( "password", "adm" );
+        db.insert( "Utilizador", null, cv );
+
+        cv = new ContentValues();
+        cv.put( "nome", "vania" );
+        cv.put( "animal", "doguinho" );
+        cv.put( "local", "Ribeira" );
+        cv.put("contato", "809890797");
+
+        db.insert( "DadosAnimal", null, cv );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        ContentValues cv = new ContentValues();
         db.execSQL( "DROP TABLE IF EXISTS Utilizador;" );
         db.execSQL( "DROP TABLE IF EXISTS DadosAnimal;" );
         onCreate( db );
+
     }
 
     public long CriarUtlizador(String username, String password) {
@@ -49,6 +65,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return "ERRO";
     }
+
+    //o retorno da funçao tem que ser o objeto animal
     public ArrayList<String> PreencherDados() {
         SQLiteDatabase db = getReadableDatabase();
         Cursor b = db.rawQuery( "SELECT * FROM  DadosAnimal ", null);
@@ -87,13 +105,15 @@ public class DBHelper extends SQLiteOpenHelper {
         return animal;
     }
 
-    public long CriarPost(String nome, String animal, String end, String tel) {
+    public Object CriarPost(String name, String age, String endereco, String contato, Bitmap image) {
+
         SQLiteDatabase db = getWritableDatabase();
         ContentValues a = new ContentValues();
-        a.put("nome", nome);
-        a.put("animal" , animal);
-        a.put( "local", end);
-        a.put( "Contato",tel );
+        a.put("contato", valueOf(getContato()));
+        a.put("nome" , valueOf(getName()));
+        a.put( "idade", valueOf(getAge()));
+        a.put( "endereco", valueOf(getEndereco()) );
+        a.put("image", DbBitmapUtility.getBytes(Animal.getImage()));
         long result = db.insert( "DadosAnimal", null, a );
         return result;
     }

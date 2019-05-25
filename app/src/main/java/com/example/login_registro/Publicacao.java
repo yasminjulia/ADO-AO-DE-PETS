@@ -1,5 +1,4 @@
 package com.example.login_registro;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,19 +8,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.ImageView;
 import android.content.Context;
-
+import static java.lang.String.*;
 
 public class Publicacao extends AppCompatActivity {
 
     EditText animal, age, tel, local;
     DBHelper db;
-    Button postar, pesquisar, cam, map;
+    Button postar, pesquisar;
+    ImageButton cam, map;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView imThumb;
     Context context;
+    Animal animalObject;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -37,29 +39,35 @@ public class Publicacao extends AppCompatActivity {
         postar=(Button)findViewById(R.id.bt_postar);
         pesquisar = (Button)findViewById( R.id.bt_pesquisa );
         tel = (EditText)findViewById( R.id.contato );
-        cam = (Button)findViewById( R.id.Buttocam );
-        map = (Button)findViewById( R.id.Buttomap );
+        cam = (ImageButton) findViewById( R.id.Buttocam );
+        map = (ImageButton)findViewById( R.id.Buttomap );
         imThumb = (ImageView) findViewById(R.id.imThumb);
+
 
         postar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String animais = animal.getText().toString();
-                String age1 = age.getText().toString();
-                String end = local.getText().toString();
-                String tel1 = tel.getText().toString();
+                animalObject = new Animal();
+                animalObject.setName(animal.getText().toString());
+                animalObject.setAge(age.getText().toString());
+                animalObject.setEndereco(local.getText().toString());
+                animalObject.setContato(tel.getText().toString());
 
-                if (animais.equals( "" ) || tel1.equals( "" )){
-                    Toast.makeText( Publicacao.this,"Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
-                } else if (age1.equals( "" )|| end.equals( "" )) {
+                //
+
+                if (animalObject.getName().equals( "" )){
+                    Toast.makeText( Publicacao.this,"Nome não inserido, tente novamente", Toast.LENGTH_SHORT).show();
+                } else if (animalObject.getAge().equals( "" )|| animalObject.getEndereco().equals( "" )) {
                     Toast.makeText( Publicacao.this, "Deve preencher o campo corretamente, tente novamente", Toast.LENGTH_SHORT ).show();
                 } else {
-                    long res  = db.CriarPost( animais, age1, end, tel1);
+                    //alterar metodo criar post para receber o objeto animal
+                    long res  = (long) db.CriarPost( animalObject.getName(), animalObject.getAge(), animalObject.getEndereco(), animalObject.getContato(), animalObject.getImage());
                     if (res>0){
                         Toast.makeText( Publicacao.this, "Publicado com sucesso", Toast.LENGTH_SHORT ).show();
                     } else {
                         Toast.makeText( Publicacao.this, "Publicação inválida", Toast.LENGTH_SHORT ).show();
                     }
+
                 }
             }
 
@@ -71,6 +79,7 @@ public class Publicacao extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         cam.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +87,7 @@ public class Publicacao extends AppCompatActivity {
             }
         } );
     }
+
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE );
         if (takePictureIntent.resolveActivity( getPackageManager())!= null){
@@ -88,8 +98,10 @@ public class Publicacao extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode== RESULT_OK){
         Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+
             imThumb.setImageBitmap( imageBitmap );
+            animalObject.setImage(imageBitmap);
+
         }
     }
-
 }

@@ -8,33 +8,39 @@
 
     <Button
         android:id="@+id/bt_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="115dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="280dp"
         android:text="Login"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <EditText
         android:id="@+id/et_password"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="38dp"
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/bt_login"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_username" />
 
     <EditText
         android:id="@+id/et_username"
-        android:layout_width="257dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_width="270dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="300dp"
         android:layout_marginBottom="21dp"
         android:ems="10"
         android:hint="Usuário"
