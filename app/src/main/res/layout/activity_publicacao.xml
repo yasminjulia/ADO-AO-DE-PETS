@@ -17,8 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Adote um pet"
-        android:textSize="16sp" />
+        android:text="Registre um pet"
+        android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/imThumb"
@@ -174,7 +174,7 @@
 
         <Button
             android:id="@+id/bt_postar"
-            android:layout_width="0dp"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="postar"
@@ -188,6 +188,12 @@
             android:layout_weight="1"
             android:text="Pesquisar Pet"
             android:textStyle="bold" />
+        <Button
+            android:id="@+id/share"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Compartilhe"/>
 
     </LinearLayout>
 </LinearLayout>
