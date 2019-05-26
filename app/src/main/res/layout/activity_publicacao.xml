@@ -174,7 +174,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp">
 
-
         <Button
             android:id="@+id/bt_postar"
             android:layout_width="1dp"
@@ -182,7 +181,6 @@
             android:layout_weight="1"
             android:text="CADASTRAR"
             android:textStyle="bold" />
-
 
         <Button
             android:id="@+id/bt_pesquisa"
@@ -192,7 +190,7 @@
             android:text="Pesquisar Pet"
             android:textStyle="bold" />
         <Button
-            android:id="@+id/share"
+            android:id="@+id/bt_share"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

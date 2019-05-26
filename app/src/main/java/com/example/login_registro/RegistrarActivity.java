@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class RegistrarActivity extends AppCompatActivity {
 
     EditText et_username,et_pass1, et_pass2;
-    Button  bt_registrar;
+    Button  bt_registrar,bt_share;
     DBHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,19 @@ public class RegistrarActivity extends AppCompatActivity {
                 String p1 = et_pass1.getText().toString();
                 String p2 = et_pass2.getText().toString();
 
+    bt_share.setOnClickListener( new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Animal ani = new Animal();
+        ani.setName(Animal.getName());
+
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,ani.getClass().toString());
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
+    }
+} );
                 if (username.equals( "" )) {
                     Toast.makeText( RegistrarActivity.this, "Username não inserido, tente novamente", Toast.LENGTH_SHORT ).show();
                 } else if (p1.equals( "" ) || p2.equals( "" )) {
