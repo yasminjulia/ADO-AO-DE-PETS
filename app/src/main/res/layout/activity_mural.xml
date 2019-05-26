@@ -20,18 +20,15 @@
             android:id="@+id/textView"
             android:layout_width="236dp"
             android:layout_height="43dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="64dp"
-            android:layout_marginLeft="64dp"
-            android:layout_marginTop="41dp"
-            android:layout_marginEnd="78dp"
-            android:layout_marginRight="78dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="75dp"
+            android:layout_marginRight="75dp"
+            android:fontFamily="cursive"
             android:text="Mural de Publicações"
-            android:textSize="24sp" />
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/recebe_pesquisa"
