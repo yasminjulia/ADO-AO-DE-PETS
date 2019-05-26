@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bt_entrar=(Button) findViewById(R.id.bt_entrar);
+       /* bt_entrar=(Button) findViewById(R.id.bt_entrar);
         bt_registrar=(Button) findViewById(R.id.bt_registrar);
         bt_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
         bt_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
